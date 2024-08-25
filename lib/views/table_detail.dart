@@ -13,21 +13,29 @@ class TableDetail extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Found your table!'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('Your table is:'),
-              Text(
-                table.name,
-                style: const TextStyle(fontSize: 24),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(children: [
+                const Text('Your table is:'),
+                Text(
+                  table.name,
+                  style: const TextStyle(fontSize: 24),
+                ),
+                const SizedBox(height: 16),
+                Text(table.directions),
+              ]),
+            ),
+            const SizedBox(height: 16),
+            Expanded(
+              child: InteractiveViewer(
+                child: const FlutterLogo(size: 128),
               ),
-              const SizedBox(height: 16),
-              Text(table.directions),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

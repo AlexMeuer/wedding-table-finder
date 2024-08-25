@@ -26,7 +26,6 @@ dependencies:
     sdk: flutter
 
   flutter_typeahead: ^5.2.0
-  zoom_widget: ^2.0.1
 
 dev_dependencies:
   flutter_test:
