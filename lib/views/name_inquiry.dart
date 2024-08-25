@@ -61,7 +61,7 @@ class NameInquiry extends StatelessWidget {
                     hideOnEmpty: true,
                     focusNode: inputNode,
                     suggestionsCallback: (query) {
-                      if (query.length < 3) return const [];
+                      if (query.isEmpty) return const [];
                       return tables
                           .where((table) => table.guests.any((name) =>
                               name.toLowerCase().contains(query.toLowerCase())))
@@ -80,8 +80,11 @@ class NameInquiry extends StatelessWidget {
                     onSelected: (value) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) =>
-                                TableDetail(table: value.table)),
+                          builder: (context) => TableDetail(
+                            selectedTableIndex: tables.indexOf(value.table),
+                            tables: tables,
+                          ),
+                        ),
                       );
                     },
                   ),

@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart' hide Table;
+import 'package:wedding_table_finder/tables_painter.dart';
 
 import '../models/table.dart';
 
 class TableDetail extends StatelessWidget {
-  const TableDetail({super.key, required this.table});
+  const TableDetail({
+    super.key,
+    required this.selectedTableIndex,
+    required this.tables,
+  });
 
-  final Table table;
+  final int selectedTableIndex;
+  final List<Table> tables;
 
   @override
   Widget build(BuildContext context) {
+    final table = tables[selectedTableIndex];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Found your table!'),
@@ -32,7 +39,14 @@ class TableDetail extends StatelessWidget {
             const SizedBox(height: 16),
             Expanded(
               child: InteractiveViewer(
-                child: const FlutterLogo(size: 128),
+                maxScale: 5.0,
+                child: CustomPaint(
+                  size: Size.infinite,
+                  painter: TablesPainter(
+                    tables: tables,
+                    selectedTableIndex: selectedTableIndex,
+                  ),
+                ),
               ),
             ),
           ],
