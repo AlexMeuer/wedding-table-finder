@@ -1,7 +1,7 @@
 class Table {
   final String name;
-  final int x;
-  final int y;
+  final double x;
+  final double y;
   final String directions;
   final List<String> guests;
 
@@ -16,8 +16,8 @@ class Table {
   factory Table.fromJson(Map<String, dynamic> json) {
     return Table(
       name: json['name'] as String,
-      x: json['x'] as int,
-      y: json['y'] as int,
+      x: json['x'] as double,
+      y: json['y'] as double,
       directions: json['directions'] as String,
       guests: (json['guests'] as List).map((e) => e as String).toList(),
     );

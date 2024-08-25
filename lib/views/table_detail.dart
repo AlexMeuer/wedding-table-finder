@@ -30,7 +30,10 @@ class TableDetail extends StatelessWidget {
                 const Text('Your table is:'),
                 Text(
                   table.name,
-                  style: const TextStyle(fontSize: 24),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Text(table.directions),
@@ -41,7 +44,6 @@ class TableDetail extends StatelessWidget {
               child: InteractiveViewer(
                 maxScale: 5.0,
                 child: CustomPaint(
-                  size: Size.infinite,
                   painter: TablesPainter(
                     tables: tables,
                     selectedTableIndex: selectedTableIndex,
