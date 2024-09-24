@@ -7,7 +7,7 @@ class TablesPainter extends CustomPainter {
   final int selectedTableIndex;
   final List<Table> tables;
 
-  static const tableRadius = 25.0;
+  static const tableRadius = 35.0;
   static const dancefloorRadius = 70.0;
   static const calibratedSize = 400;
 
@@ -33,17 +33,35 @@ class TablesPainter extends CustomPainter {
           ..layout()
           ..paint(canvas, scaleOffset(position));
 
-    paintIcon(Icons.wc, const Offset(150, -150));
+    // ------------------------------------------- \\
+    // Paint icons to aid in directing the guests. \\
+    // ------------------------------------------- \\
+    paintIcon(Icons.pool, const Offset(100, -180));
+    paintIcon(Icons.arrow_upward, const Offset(115, -180));
 
-    final dancefloorPaint = Paint()
+    paintIcon(Icons.church, const Offset(160, 80));
+
+    paintIcon(Icons.wine_bar, const Offset(-190, 0));
+    paintIcon(Icons.arrow_back, const Offset(-190, 15));
+
+    paintIcon(Icons.room_service, const Offset(0, 180));
+    paintIcon(Icons.arrow_downward, const Offset(15, 180));
+
+    // --------------------------------- \\
+    // Paint the center courtyard circle \\
+    // --------------------------------- \\
+    final courtyardPaint = Paint()
       ..style = PaintingStyle.fill
       ..color = Colors.amber.withOpacity(0.5);
     canvas.drawCircle(
       size.center(Offset.zero),
       scaleRadius(dancefloorRadius),
-      dancefloorPaint,
+      courtyardPaint,
     );
 
+    // ------------------------------------------ \\
+    // Paint each of the tables and their labels. \\
+    // ------------------------------------------ \\
     final normalTablePaint = Paint()
       ..style = PaintingStyle.stroke
       ..color = Colors.black;

@@ -6,10 +6,12 @@ import '../models/table.dart';
 class TableDetail extends StatelessWidget {
   const TableDetail({
     super.key,
+    required this.guestName,
     required this.selectedTableIndex,
     required this.tables,
   });
 
+  final String guestName;
   final int selectedTableIndex;
   final List<Table> tables;
 
@@ -27,7 +29,7 @@ class TableDetail extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(children: [
-                const Text('Your table is:'),
+                Text('$guestName, your table is:'),
                 Text(
                   table.name,
                   style: const TextStyle(
